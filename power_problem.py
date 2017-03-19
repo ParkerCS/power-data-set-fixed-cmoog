@@ -122,13 +122,19 @@ for k in range(len(size_list)):
     size_list[k] = size_list[k] / 100
 
 
-plt.figure(figsize=[4.4, 6.6], tight_layout=True)
-population_plot = plt.scatter(long_data, lat_data, s=size_list, alpha=0.3)
+plt.figure(1, figsize=[4.3*2, 6.6], tight_layout=True)
+
+plt.subplot(1, 2, 1) # rows,columns,currentgraphnumber
+plt.scatter(long_data, lat_data, s=size_list, alpha=0.3)
 
 plt.xlabel("Longitude")
 plt.ylabel("Latitude")
 plt.title("Zipcodes Scaled by Population")
-plt.show()
+#plt.show()
+
+
+
+
 
 
 #4 (Harder) USING BOTH THE ZIP CODE DATA AND THE POWER DATA... Make a scatterplot of all zip codes in Illinois according to their Lat/Long.  Make the marker red for the top 25% in residential power rate.  Make the marker yellow for the middle 25 to 50 percentile. Make the marker green if customers pay a rate in the bottom 50% of residential power cost.  This one is very challenging.  You are using data from two different datasets and merging them into one.  There are many ways to solve. (20pts)
@@ -160,12 +166,13 @@ for j in range(len(res_rate)):
         color_list.append("yellow")
     else:
         color_list.append("green")
-
-plt.figure(figsize=[4.5,6.6], tight_layout=True)
-power_price_plot = plt.scatter(long_data,lat_data, color=color_list, s=20)
+plt.subplot(1, 2, 2)
+plt.scatter(long_data,lat_data, color=color_list, s=20)
+#plt.figure(figsize=[4.5,6.6], tight_layout=True)
 
 plt.xlabel("Longitude")
 plt.ylabel("Latitude")
 plt.title("Residential Electricity Rates by Zipcode")
 plot_legend()
+
 plt.show()
