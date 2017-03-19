@@ -70,7 +70,7 @@ power_data = sorted(power_data, key=lambda x: x[0])
 print("The average residential rate for electricity in 60614 is", power_data[binary_search("60614", power_data)][8], "dollars per kWh.")
 
 #2 What is the MEDIAN rate for all BUNDLED RESIDENTIAL rates in Illinois? Use the data you extracted to check all "IL" zipcodes to answer this. (10pts)
-il_bund_res = []
+il_bund_res = [] ## Here this is only going to hold the rates
 for i in range(len(power_data)):
     if power_data[i][3] == "IL" and power_data[i][4] == "Bundled":
         il_bund_res.append(power_data[i][8])
@@ -79,7 +79,7 @@ print("The median rate for bundled residents in IL is", statistics.median(il_bun
 
 
 #3 What city in Illinois has the lowest residential rate?  Which has the highest?  You will need to go through the database and compare each value for this one. Then you will need to reference the zipcode dataset to get the city.  (15pts)
-il_bund_res = []
+il_bund_res = [] ## Here this is going to hold the entire list of data for IL bundles
 for i in range(len(power_data)):
     if power_data[i][3] == "IL" and power_data[i][4] == "Bundled":
         il_bund_res.append(power_data[i])
