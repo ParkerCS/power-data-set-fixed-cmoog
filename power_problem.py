@@ -65,13 +65,7 @@ power_data = your_list
 
 headers = power_data[0]
 power_data.remove(power_data[0])
-'''
-power_data = sorted(power_data, key=lambda x: x[4])  # found this online
-index = len(power_data)-1
-while power_data[index][4] != "Bundled":
-    power_data.remove(power_data[index])
-    index -= 1
-'''
+
 power_data = sorted(power_data, key=lambda x: x[0])
 print("The average residential rate for electricity in 60614 is", power_data[binary_search("60614", power_data)][8], "dollars per kWh.")
 
@@ -82,12 +76,7 @@ for i in range(len(power_data)):
         il_bund_res.append(power_data[i][8])
 
 print("The median rate for bundled residents in IL is", statistics.median(il_bund_res))
-'''
-##remove all delivery lines (only keeps bundled)
-for item in power_data:
-    if item[4] == "Delivery":
-        power_data.remove(item)
-'''
+
 
 #3 What city in Illinois has the lowest residential rate?  Which has the highest?  You will need to go through the database and compare each value for this one. Then you will need to reference the zipcode dataset to get the city.  (15pts)
 il_bund_res = []
@@ -96,7 +85,6 @@ for i in range(len(power_data)):
         il_bund_res.append(power_data[i])
 
 il_bund_res = sorted(il_bund_res, key=lambda x: x[8])
-print("LOOK AT THIS IT SHOULD BE:", il_bund_res[0][8])
 lowest_rate_zip = il_bund_res[0][0]
 highest_rate_zip = il_bund_res[len(il_bund_res)-1][0]
 
@@ -118,7 +106,6 @@ def plot_legend():
     top_25 = mpatches.Patch(label="Top 25th percentile", color="red")
     fifty_to_seventy_five = mpatches.Patch(label="50th to 75th percentile", color="yellow")
     bottom_fifty = mpatches.Patch(label="Bottom 50th percentile", color="green")
-
     plt.legend(handles=[top_25, fifty_to_seventy_five, bottom_fifty])
 
 long_data = []
@@ -128,6 +115,7 @@ color_list = []
 size = []
 il_bund_res = sorted(il_bund_res, key=lambda x: x[8])
 res_rate = []
+
 for i in range(len(zip_code_data)):
     if zip_code_data[i][3] == "IL":
         long_data.append(zip_code_data[i][6])
@@ -143,13 +131,8 @@ for j in range(len(res_rate)):
     else:
         color_list.append("green")
 
-print(res_rate)
-print(selection_sort(res_rate))
-#for k in range(len(res_rate)):
-
 plt.figure(figsize=[4.5,6.6], tight_layout=True)
 my_plot = plt.scatter(long_data,lat_data, color=color_list)
-
 
 plt.xlabel("Longitude")
 plt.ylabel("Latitude")
