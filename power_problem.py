@@ -25,6 +25,8 @@ FOR ALL THE RATES, ONLY USE THE BUNDLED VALUES (NOT DELIVERY).  This rate includ
 import matplotlib.pyplot as plt
 import csv
 import statistics
+import matplotlib.patches as mpatches
+
 
 def selection_sort(list):
     for pos in range(len(list)):
@@ -112,9 +114,12 @@ print("The city with the highest residential rate in IL is", zip_code_data[binar
 #4  (Easier) USING ONLY THE ZIP CODE DATA... Make a scatterplot of all the zip codes in Illinois according to their Lat/Long.  Make the marker size vary depending on the population contained in that zip code.  Add an alpha value to the marker so that you can see overlapping markers.
 
 #4 (Harder) USING BOTH THE ZIP CODE DATA AND THE POWER DATA... Make a scatterplot of all zip codes in Illinois according to their Lat/Long.  Make the marker red for the top 25% in residential power rate.  Make the marker yellow for the middle 25 to 50 percentile. Make the marker green if customers pay a rate in the bottom 50% of residential power cost.  This one is very challenging.  You are using data from two different datasets and merging them into one.  There are many ways to solve. (20pts)
-def percentiles(list):
-    selection_sort(list)
-    print(list)
+def plot_legend():
+    top_25 = mpatches.Patch(label="Top 25th percentile", color="red")
+    fifty_to_seventy_five = mpatches.Patch(label="50th to 75th percentile", color="yellow")
+    bottom_fifty = mpatches.Patch(label="Bottom 50th percentile", color="green")
+
+    plt.legend(handles=[top_25, fifty_to_seventy_five, bottom_fifty])
 
 long_data = []
 lat_data = []
@@ -149,5 +154,5 @@ my_plot = plt.scatter(long_data,lat_data, color=color_list)
 plt.xlabel("Longitude")
 plt.ylabel("Latitude")
 plt.title("Residential Electricity Rates by Zipcode")
-
+plot_legend()
 plt.show()
