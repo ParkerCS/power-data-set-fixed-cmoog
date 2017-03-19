@@ -101,6 +101,36 @@ print("The city with the highest residential rate in IL is", zip_code_data[binar
 #FOR #4  CHOOSE ONE OF THE FOLLOWING TWO PROBLEMS. The first one is easier than the second.
 #4  (Easier) USING ONLY THE ZIP CODE DATA... Make a scatterplot of all the zip codes in Illinois according to their Lat/Long.  Make the marker size vary depending on the population contained in that zip code.  Add an alpha value to the marker so that you can see overlapping markers.
 
+long_data = []
+lat_data = []
+zips = []
+size_list = []
+il_bund_res = sorted(il_bund_res, key=lambda x: x[8])
+res_rate = []
+
+for i in range(len(zip_code_data)):
+    if zip_code_data[i][3] == "IL":
+        long_data.append(zip_code_data[i][6])
+        lat_data.append(zip_code_data[i][5])
+        zips.append((zip_code_data[i][0]))
+        try:
+            size_list.append(float(zip_code_data[i][10]))
+        except:
+            size_list.append(0)
+
+for k in range(len(size_list)):
+    size_list[k] = size_list[k] / 100
+
+
+plt.figure(figsize=[4.4, 6.6], tight_layout=True)
+population_plot = plt.scatter(long_data, lat_data, s=size_list, alpha=0.3)
+
+plt.xlabel("Longitude")
+plt.ylabel("Latitude")
+plt.title("Zipcodes Scaled by Population")
+plt.show()
+
+
 #4 (Harder) USING BOTH THE ZIP CODE DATA AND THE POWER DATA... Make a scatterplot of all zip codes in Illinois according to their Lat/Long.  Make the marker red for the top 25% in residential power rate.  Make the marker yellow for the middle 25 to 50 percentile. Make the marker green if customers pay a rate in the bottom 50% of residential power cost.  This one is very challenging.  You are using data from two different datasets and merging them into one.  There are many ways to solve. (20pts)
 def plot_legend():
     top_25 = mpatches.Patch(label="Top 25th percentile", color="red")
@@ -112,7 +142,7 @@ long_data = []
 lat_data = []
 zips = []
 color_list = []
-size = []
+
 il_bund_res = sorted(il_bund_res, key=lambda x: x[8])
 res_rate = []
 
@@ -132,7 +162,7 @@ for j in range(len(res_rate)):
         color_list.append("green")
 
 plt.figure(figsize=[4.5,6.6], tight_layout=True)
-my_plot = plt.scatter(long_data,lat_data, color=color_list)
+power_price_plot = plt.scatter(long_data,lat_data, color=color_list, s=20)
 
 plt.xlabel("Longitude")
 plt.ylabel("Latitude")
