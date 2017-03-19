@@ -142,14 +142,12 @@ print(res_rate)
 print(selection_sort(res_rate))
 #for k in range(len(res_rate)):
 
-plt.figure(figsize=[4.7,6.5], tight_layout=True)
+plt.figure(figsize=[4.5,6.6], tight_layout=True)
 my_plot = plt.scatter(long_data,lat_data, color=color_list)
 
 
 plt.xlabel("Longitude")
 plt.ylabel("Latitude")
-plt.title("Illinois Zip Codes - Scaled by Residential Electricity Rate")
-
-#plt.ylim([float(min(lat))- 5, float(max(long_data)) + 5])
+plt.title("Residential Electricity Rates by Zipcode")
 
 plt.show()
