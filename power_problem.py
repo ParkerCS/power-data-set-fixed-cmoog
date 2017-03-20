@@ -134,8 +134,9 @@ plt.title("Zipcodes Scaled by Population")
 def plot_legend():
     top_25 = mpatches.Patch(label="Top 25th percentile", color="red")
     fifty_to_seventy_five = mpatches.Patch(label="50th to 75th percentile", color="yellow")
-    bottom_fifty = mpatches.Patch(label="Bottom 50th percentile", color="green")
-    plt.legend(handles=[top_25, fifty_to_seventy_five, bottom_fifty])
+    twenty_five_to_fifty = mpatches.Patch(label="25th to 50th percentile", color="orange")
+    bottom_twenty_five = mpatches.Patch(label="Bottom 25th percentile", color="green")
+    plt.legend(handles=[top_25, fifty_to_seventy_five, twenty_five_to_fifty, bottom_twenty_five])
 
 long_data = []
 lat_data = []
