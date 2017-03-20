@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import csv
-import statistics
 import matplotlib.patches as mpatches
 
 with open("free-zipcode-database-Primary.csv", 'r') as f: ## the reader we usually use wasn't working correctly so I found this online
@@ -13,7 +12,6 @@ long_data = []
 lat_data = []
 zips = []
 size_list = []
-print(zip_code_data)
 zip_code_data.remove(zip_code_data[0])
 
 for i in range(len(zip_code_data)):
