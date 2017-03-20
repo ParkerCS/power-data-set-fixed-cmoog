@@ -106,7 +106,6 @@ lat_data = []
 zips = []
 size_list = []
 il_bund_res = sorted(il_bund_res, key=lambda x: x[8])
-res_rate = []
 
 for i in range(len(zip_code_data)):
     if zip_code_data[i][3] == "IL":
@@ -158,6 +157,8 @@ for j in range(len(res_rate)):
         color_list.append("red")
     elif j / len(res_rate) > .5:
         color_list.append("yellow")
+    #elif j/len(res_rate) > .25:
+    #    color_list.append("blue")
     else:
         color_list.append("green")
 plt.subplot(1, 2, 2)
