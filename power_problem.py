@@ -157,8 +157,8 @@ for j in range(len(res_rate)):
         color_list.append("red")
     elif j / len(res_rate) > .5:
         color_list.append("yellow")
-    #elif j/len(res_rate) > .25:
-    #    color_list.append("blue")
+    elif j/len(res_rate) > .25:
+        color_list.append("orange")
     else:
         color_list.append("green")
 plt.subplot(1, 2, 2)
